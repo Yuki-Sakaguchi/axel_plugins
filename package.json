@@ -1,0 +1,25 @@
+{
+  "name": "axel_plugins",
+  "version": "1.0.0",
+  "description": "JavaScriptプラグイン",
+  "scripts": {
+    "gulp": "./node_modules/.bin/gulp",
+    "watch": "./node_modules/.bin/gulp watch",
+    "webserver": "./node_modules/.bin/gulp webserver"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "gulp": "^3.9.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-typescript": "^4.0.1",
+    "gulp-webserver": "^0.9.1",
+    "postcss-sorting": "^3.0.1",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "browserify": "^16.1.1"
+  }
+}

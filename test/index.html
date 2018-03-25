@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AXEL PLUGINS TEST</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .test-box {
+        margin: 30px;
+        border: 1px solid #aaa;
+        border-radius: 3px;
+      }
+      h1,
+      h2 {
+        margin: 20px;
+      }
+      p {
+        margin: 0;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AXEL PLUGINS TEST</h1>
+
+    <!-- view test -->
+    <section class="test-box">
+      <link rel="stylesheet" href="../lib/view/view.css">
+      <h2>VIEW</h2>
+      <div class="axel-view-box">
+        <p>
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+        </p>
+      </div>
+      <div class="axel-view-box">
+        <p>
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+        </p>
+      </div>
+      <div class="axel-view-box">
+        <p>
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+          サンプルサンプルサンプルサンプルサンプルサンプル
+        </p>
+      </div>
+      <script src="../lib/view/view.js"></script>
+      <script>
+        // 画面に表示されるとactiveクラスが付く
+        // var elSection = new View('.axel-view-box');
+
+        // 付けるクラス名を変える
+        // var elSection = new View('.axel-view-box', 'test');
+
+        // コールバック関数を指定
+        // var elSection = new View('.axel-view-box', function(target) {
+        //   console.log(target);
+        // });
+
+        // 細かくオプションを設定
+        var elSection = new View('.axel-view-box', {
+          offset: '50%',
+          test: 'rgba(19, 169, 218, 0.5)',
+          scrollEnd: true,
+          addClassName: 'js-active',
+          callback: function(target) {
+             console.log(target); 
+          }
+        });
+      </script>
+    </section>
+    <!-- view test -->
+
+  </body>
+</html>

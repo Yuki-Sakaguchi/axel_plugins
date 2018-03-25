@@ -1,0 +1,21 @@
+/**
+ * view
+ */
+.axel-view-box {
+  margin: 50px;
+  padding: 50px;
+  // transition-delay: 0.3s;
+  transition-duration: 0.3s;
+  border: 1px solid #aaa;
+  
+  @media screen and (max-width: 480px) {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  &.active,
+  &.js-active {
+    background-color: #444;
+    color: white;
+  }
+}
