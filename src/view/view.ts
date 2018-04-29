@@ -140,7 +140,9 @@ class View {
     // 表示されたらcallbackを動かす
     if (target.eventPosition < window.pageYOffset) {
       this.addClass(target.element);
-      this._options.callback(target.element);
+      if (typeof this._options.callback === 'function') {
+        this._options.callback(target.element);
+      }
       target.isSuccess = true;
     }
 
@@ -149,7 +151,9 @@ class View {
       if (document.body.clientHeight - window.innerHeight < window.pageYOffset) {
         if (!target.isSuccess) {
           this.addClass(target.element);
-          this._options.callback(target.element);
+          if (typeof this._options.callback === 'function') {
+            this._options.callback(target.element);
+          }
           target.isSuccess = true;
         }
       }    
