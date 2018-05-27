@@ -25,14 +25,34 @@
         margin-bottom: 10px;
       }
     </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   </head>
   <body>
     <h1>AXEL PLUGINS TEST</h1>
 
+
     <!-- view test -->
     <section class="test-box">
-      <link rel="stylesheet" href="../lib/view/view.css">
       <h2>VIEW</h2>
+      <style>
+      .axel-view-box {
+        margin: 50px;
+        padding: 50px;
+        transition-duration: 0.3s;
+        border: 1px solid #aaa;
+      }
+      @media screen and (max-width: 480px) {
+        .axel-view-box {
+          margin: 20px;
+          padding: 20px;
+        }
+      }
+      .axel-view-box.active,
+      .axel-view-box.js-active {
+        background-color: #444;
+        color: white;
+      }
+      </style>
       <div class="axel-view-box">
         <p>
           サンプルサンプルサンプルサンプルサンプルサンプル
@@ -89,6 +109,87 @@
       </script>
     </section>
     <!-- view test -->
+
+
+
+    <!-- accordion test -->
+    <section class="test-box">
+      <h2>ACCORDION</h2>
+      <link rel="stylesheet" href="../lib/accordion/accordion.css">
+      <style>
+        .accordion {
+          margin: 20px;
+        }
+        .accordion div {
+          margin-bottom: 10px;
+          padding: 10px 20px;
+          border: 1px solid black;
+        }
+        .accordion dt {
+          font-size: 20px;
+          font-weight: bold;
+        }
+        .accordion dd {
+          margin: 10px 0;
+        }
+      </style>
+      <dl class="accordion">
+        <div>
+          <dt class="js-accordion-title">タイトル</dt>
+          <dd class="js-accordion-body">
+            本文本文本文本文本文本文本文本文本文本文本文
+            本文本文本文本文本文本文本文本文本文本文本文
+            本文本文本文本文本文本文本文本文本文本文本文
+            本文本文本文本文本文本文本文本文本文本文本文
+          </dd>
+        </div>
+        <div>
+          <dt class="js-accordion-title js-open">初めから開いておきたい場合は.js-openをつける</dt>
+          <dd class="js-accordion-body">
+            本文本文本文本文本文本文本文本文本文本文本文
+            本文本文本文本文本文本文本文本文本文本文本文
+            本文本文本文本文本文本文本文本文本文本文本文
+            本文本文本文本文本文本文本文本文本文本文本文
+          </dd>
+        </div>
+      </dl>
+      <script src="../lib/accordion/accordion.js"></script>
+    </section>
+    <!-- accordion test -->
+
+
+
+    <!-- protect img test -->
+    <section class="test-box">
+      <h2>PROTECT IMG</h2>
+      <style>
+        .test-box {
+          position: relative;  
+        }
+        .test-box img {
+          display: block;
+          text-align: center;
+          width: 80%;
+          margin: 30px auto;
+          max-width: 100%;
+          height: auto;
+        }
+      </style>
+      <div class="js-protect">
+        <img src="./images/sample.jpg">
+      </div>
+      <script src="../lib/protectImg/protect_img.js"></script>
+      <script>
+        $(function() {
+          $('.js-protect').aemProtectImage({
+            blankImg: '../lib/protectImg/blank.gif'
+          });
+        });
+      </script>
+    </section>
+    <!-- protect img test -->
+
+
 
   </body>
 </html>

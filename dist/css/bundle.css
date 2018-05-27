@@ -1,0 +1,10 @@
+/**
+ * accordion
+ */
+.js-accordion-title {
+  cursor: pointer;
+}
+
+.js-accordion-body {
+  display: none;
+}

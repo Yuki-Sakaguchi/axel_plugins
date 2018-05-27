@@ -3,7 +3,10 @@ var gulp = require('gulp'),
     pug = require('gulp-pug'),
     plumber = require('gulp-plumber'),
     sass = require('gulp-sass'),
-    browserify = require('browserify'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    cleanCss = require('gulp-clean-css'),
+    rename = require('gulp-rename'),
     typeScript = require('gulp-typescript'),
     postcss = require('gulp-postcss'),
     server = require('gulp-webserver');
@@ -50,15 +53,27 @@ gulp.task('scss', function() {
 });
 
 
-// TODO libのファイルをまとめてdistに書き出す
 /**
  * build
  */
 gulp.task('build', function() {
-  gulp.src(path.source + '/app.ts')
+  // js
+  gulp.src(path.lib + '/**/*.js')
   .pipe(plumber({ errorHandler: errorHandler }))
-  .pipe(browserify())
-  .pipe(gulp.dest(path.dist));
+  .pipe(concat('bundle.js'))
+  .pipe(gulp.dest(path.dist + '/js'))
+  .pipe(uglify())
+  .pipe(rename({extname: '.min.js'}))
+  .pipe(gulp.dest(path.dist + '/js'));
+
+  // css
+  gulp.src(path.lib + '/**/*.css')
+  .pipe(plumber({ errorHandler: errorHandler }))
+  .pipe(concat('bundle.css'))
+  .pipe(gulp.dest(path.dist + '/css'))
+  .pipe(cleanCss())
+  .pipe(rename({extname: '.min.css'}))
+  .pipe(gulp.dest(path.dist + '/css'));
 });
 
 

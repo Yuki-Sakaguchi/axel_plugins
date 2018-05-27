@@ -20,6 +20,11 @@
     "typescript": "^2.7.2"
   },
   "dependencies": {
-    "browserify": "^16.1.1"
+    "@types/jquery": "^3.3.2",
+    "browserify": "^16.1.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.3",
+    "gulp-uglify": "^3.0.0"
   }
 }
