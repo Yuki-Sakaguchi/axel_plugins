@@ -163,10 +163,8 @@
     <section class="test-box">
       <h2>PROTECT IMG</h2>
       <style>
-        .test-box {
+        .img-box {
           position: relative;  
-        }
-        .test-box img {
           display: block;
           text-align: center;
           width: 80%;
@@ -174,16 +172,24 @@
           max-width: 100%;
           height: auto;
         }
+        .img-box img:not(.blank-img) {
+          max-width: 100%;
+          height: auto !important;
+        }
       </style>
-      <div class="js-protect">
+      <div class="js-protect img-box">
+        <img src="./images/sample.jpg">
+      </div>
+      <div class="js-protect img-box">
+        <img src="./images/sample.jpg">
+      </div>
+      <div class="js-protect img-box">
         <img src="./images/sample.jpg">
       </div>
       <script src="../lib/protectImg/protect_img.js"></script>
       <script>
         $(function() {
-          $('.js-protect').aemProtectImage({
-            blankImg: '../lib/protectImg/blank.gif'
-          });
+          $('.js-protect').aemProtectImage();
         });
       </script>
     </section>

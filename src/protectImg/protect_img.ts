@@ -4,7 +4,7 @@
       var img, rawImg, settings, setupImgTag;
       settings = {
         disableContextmenu: false,
-        blankImg: '/images/blank.gif',
+        blankImg: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D',
         zIndex: 1000
       };
       settings = $.extend(settings, options);
