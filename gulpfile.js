@@ -5,6 +5,8 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
     cleanCss = require('gulp-clean-css'),
     rename = require('gulp-rename'),
     typeScript = require('gulp-typescript'),
@@ -28,7 +30,9 @@ var path = {
 gulp.task('ts', function() {
   var ts = typeScript.createProject('./tsconfig.json');
 
-  gulp.src(path.source + '/**/*.ts')
+  gulp.src([
+    path.source + '/**/*.ts',
+  ])
   .pipe(plumber({ errorHandler: errorHandler }))
   .pipe(ts())
   .pipe(gulp.dest(path.lib));
@@ -58,13 +62,17 @@ gulp.task('scss', function() {
  */
 gulp.task('build', function() {
   // js
-  gulp.src(path.lib + '/**/*.js')
-  .pipe(plumber({ errorHandler: errorHandler }))
-  .pipe(concat('bundle.js'))
-  .pipe(gulp.dest(path.dist + '/js'))
-  .pipe(uglify())
-  .pipe(rename({extname: '.min.js'}))
-  .pipe(gulp.dest(path.dist + '/js'));
+  browserify({
+    entries: path.lib + '/app.js',
+  })
+  .bundle()
+  .pipe(source('bundle.js'))
+  .pipe(gulp.dest(path.dist + '/js')).on('end', function() {
+    gulp.src(path.dist + '/**/bundle.js')
+    .pipe(uglify())
+    .pipe(rename({extname: '.min.js'}))
+    .pipe(gulp.dest(path.dist));
+  });
 
   // css
   gulp.src(path.lib + '/**/*.css')

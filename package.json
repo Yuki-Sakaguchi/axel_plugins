@@ -17,14 +17,15 @@
     "gulp-typescript": "^4.0.1",
     "gulp-webserver": "^0.9.1",
     "postcss-sorting": "^3.0.1",
-    "typescript": "^2.7.2"
-  },
-  "dependencies": {
-    "@types/jquery": "^3.3.2",
+    "typescript": "^2.7.2",
     "browserify": "^16.1.1",
     "gulp-clean-css": "^3.9.4",
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.2.3",
     "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.3.2",
+    "vinyl-source-stream": "^2.0.0"
   }
 }

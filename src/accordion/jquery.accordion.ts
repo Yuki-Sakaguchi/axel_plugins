@@ -2,7 +2,8 @@
  * accordion
  *    アコーディオン
  */
-$(() => {
+
+export function accordion() {
     // 定数
     const accordionTitleClass = 'js-accordion-title';
     const accordionBodyClass = 'js-accordion-body';
@@ -24,5 +25,5 @@ $(() => {
             $body.slideToggle();
         });
     });
-});
+}
 

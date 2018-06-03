@@ -2,12 +2,12 @@
  * view
  *    スクロールに応じて処理をさせる
  */
-class View {
+export class View {
   // 対象のelement
   private _elTarget: any;
 
   // オプション
-  private _options: Options = {
+  private _options: ViewOptions = {
     offset: '0',
     test: null,
     scrollEnd: false,
@@ -58,7 +58,7 @@ class View {
 
     // 対象にイベントを追加
     for (let i = 0, len = this._elTarget.length; i < len; i++) {
-      let target: Target = {
+      let target: ViewTarget = {
         element: this._elTarget[i],
         isSuccess: false,
         eventPosition: 0
@@ -102,7 +102,7 @@ class View {
   /**
    * イベントを追加
    */
-  private setEvent(target: Target) {
+  private setEvent(target: ViewTarget) {
     // イベント発火の高さを取得
     this.setEventPoition(target);
 
@@ -119,7 +119,7 @@ class View {
   /**
    * イベント発火位置を取得
    */
-  private setEventPoition(target: Target) {
+  private setEventPoition(target: ViewTarget) {
     if (this._options.offset.indexOf('%') != -1) {
       var par = parseInt(this._options.offset.replace('%', ''));
       var offset = window.innerHeight * (par / 100);
@@ -136,7 +136,7 @@ class View {
   /**
    * イベント発火
    */
-  private fire(target: Target) {
+  private fire(target: ViewTarget) {
     // 表示されたらcallbackを動かす
     if (target.eventPosition < window.pageYOffset) {
       this.addClass(target.element);
@@ -163,7 +163,7 @@ class View {
   /**
    * リサイズイベント
    */
-  private resizeHandle(target: Target) {
+  private resizeHandle(target: ViewTarget) {
     var timer;
     window.addEventListener('resize', () => {
       if (timer) clearTimeout(timer);
@@ -176,7 +176,7 @@ class View {
   /**
    * スクロールイベント
    */
-  private scrollHandle(target: Target) {
+  private scrollHandle(target: ViewTarget) {
     window.addEventListener('scroll', () => {
       if (target.isSuccess) {
         return false;
@@ -200,20 +200,4 @@ class View {
       elTarget.className += this._options.addClassName;
     }
   }
-}
-
-// オプション
-interface Options {
-  offset: string,
-  test: string,
-  scrollEnd: boolean,
-  addClassName: string,
-  callback: (HTMLElement?) => any,
-}
-
-// 対象
-interface Target {
-  element: HTMLElement,
-  isSuccess: boolean,
-  eventPosition: number
 }
